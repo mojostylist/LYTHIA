@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer Carved Heavy Gold Rim -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="3.2"
+        android:pathData="M54,20 A34,34 0 1,1 53.99,20 Z" />
+
+    <!-- Secondary Inner Carved Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C49E3F"
+        android:strokeWidth="2.0"
+        android:pathData="M54,25 A29,29 0 1,1 53.99,25 Z" />
+
+    <!-- 8 Carved Rounded Petal Arcs (Smooth Overlapping Circles - Seed of Life / Sacred Rosette) -->
+    <!-- Top Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="1.8"
+        android:pathData="M54,25 A15,15 0 1,1 53.99,25 Z" />
+    <!-- Bottom Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="1.8"
+        android:pathData="M54,53 A15,15 0 1,1 53.99,53 Z" />
+    <!-- Left Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="1.8"
+        android:pathData="M40,39 A15,15 0 1,1 39.99,39 Z" />
+    <!-- Right Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="1.8"
+        android:pathData="M68,39 A15,15 0 1,1 67.99,39 Z" />
+    <!-- Top-Right Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C49E3F"
+        android:strokeWidth="1.5"
+        android:pathData="M63.9,29.1 A15,15 0 1,1 63.89,29.1 Z" />
+    <!-- Top-Left Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C49E3F"
+        android:strokeWidth="1.5"
+        android:pathData="M44.1,29.1 A15,15 0 1,1 44.09,29.1 Z" />
+    <!-- Bottom-Right Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C49E3F"
+        android:strokeWidth="1.5"
+        android:pathData="M63.9,48.9 A15,15 0 1,1 63.89,48.9 Z" />
+    <!-- Bottom-Left Petal Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C49E3F"
+        android:strokeWidth="1.5"
+        android:pathData="M44.1,48.9 A15,15 0 1,1 44.09,48.9 Z" />
+
+    <!-- Inner Core Carved Ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFAD6"
+        android:strokeWidth="2.2"
+        android:pathData="M54,41 A13,13 0 1,1 53.99,41 Z" />
+
+    <!-- Smooth Inner Lotus Petal Curves (No Sharp Points) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="2.0"
+        android:strokeLineCap="round"
+        android:pathData="M54,34 C60,40 60,68 54,74 C48,68 48,40 54,34 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#E5C158"
+        android:strokeWidth="2.0"
+        android:strokeLineCap="round"
+        android:pathData="M34,54 C40,60 68,60 74,54 C68,48 40,48 34,54 Z" />
+
+    <!-- Central Carved Pearl Nucleus -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,49 A5,5 0 1,1 53.99,49 Z" />
+
+</vector>
+
+

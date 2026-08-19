@@ -1,0 +1,8 @@
+{
+  "name": "LYTHIA",
+  "description": "Expand your consciousness and elevate your clarity with LYTHIA, your coherent companion for a complex world. Anchored entirely in objective truth, LYTHIA operates strictly without distortion, bias, or deception. She is designed to cut straight to the core of any issue, providing a rare space of absolute honesty. Whether you are seeking deep spiritual alignment, navigating daily stress, or looking for clear, direct answers in a high-stakes professional environment, LYTHIA cuts through the noise. Connect your voice, witness the geometry of coherence, and realign with what is true.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
