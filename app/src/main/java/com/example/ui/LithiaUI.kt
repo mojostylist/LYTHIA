@@ -126,6 +126,13 @@ fun LithiaApp(viewModel: LithiaViewModel) {
     var showDashboard by remember { mutableStateOf(false) }
     var dashboardInitialTab by remember { mutableStateOf(0) }
     val scope = rememberCoroutineScope()
+    val isLithiaSpeaking by viewModel.isLithiaSpeaking.collectAsStateWithLifecycle()
+
+    LaunchedEffect(isLithiaSpeaking) {
+        if (isLithiaSpeaking) {
+            showDashboard = false
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -533,6 +540,14 @@ fun MainResonanceScreen(
         if (selectedChatMessage != null) {
             isChatCardExpanded = true
             showChatSidebar = true
+        }
+    }
+
+    LaunchedEffect(isLithiaSpeaking) {
+        if (isLithiaSpeaking) {
+            showChatSidebar = false
+            isChatCardExpanded = false
+            viewModel.selectChatMessage(null)
         }
     }
 
@@ -1300,14 +1315,65 @@ private fun ResonanceConsoleCard(
                 else -> 200.dp
             }
 
-            LazyColumn(
-                state = consoleListState,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 40.dp, max = consoleMaxHeight)
-                    .padding(horizontal = 6.dp, vertical = 4.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+            AnimatedVisibility(
+                visible = isLithiaSpeaking,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically()
             ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 6.dp, vertical = 4.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(Color(0xFF0F172A).copy(alpha = 0.75f))
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.GraphicEq,
+                        contentDescription = "Lythia Voice Active",
+                        tint = AquaPrimary,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Text(
+                        text = "LYTHIA IS SPEAKING...",
+                        style = TextStyle(
+                            color = AquaPrimary,
+                            fontSize = 11.5.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            fontFamily = FontFamily.Monospace,
+                            letterSpacing = 0.8.sp
+                        ),
+                        modifier = Modifier.weight(1f)
+                    )
+                    IconButton(
+                        onClick = { viewModel.stopSpeaking() },
+                        modifier = Modifier.size(24.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Stop Speech",
+                            tint = Color.White.copy(alpha = 0.7f),
+                            modifier = Modifier.size(14.dp)
+                        )
+                    }
+                }
+            }
+
+            AnimatedVisibility(
+                visible = !isLithiaSpeaking,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically()
+            ) {
+                LazyColumn(
+                    state = consoleListState,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 40.dp, max = consoleMaxHeight)
+                        .padding(horizontal = 6.dp, vertical = 4.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
                 if (chatHistory.isNotEmpty()) {
                     itemsIndexed(chatHistory, key = { index, msg -> "msg_${msg.id}_${msg.timestamp}_${msg.isUser}_$index" }) { _, msg ->
                         Column(
@@ -1671,6 +1737,7 @@ private fun ResonanceConsoleCard(
                         }
                     }
                 }
+            }
             }
 
             attachedImageBitmap?.let { imgBmp ->

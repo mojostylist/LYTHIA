@@ -27,8 +27,8 @@ android {
     applicationId = "com.aistudio.lythia.vxpzrk"
     minSdk = 24
     targetSdk = 35
-    versionCode = 813
-    versionName = "813.0"
+    versionCode = 824
+    versionName = "824.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }

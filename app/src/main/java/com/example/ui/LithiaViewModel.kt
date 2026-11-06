@@ -1200,14 +1200,18 @@ class LithiaViewModel(application: Application) : AndroidViewModel(application) 
 
                 val request = GenerateContentRequest(
                     contents = apiContents,
-                    systemInstruction = Content(parts = listOf(Part(text = systemPrompt)))
+                    systemInstruction = Content(parts = listOf(Part(text = systemPrompt))),
+                    generationConfig = com.example.api.GenerationConfig(
+                        maxOutputTokens = 65536
+                    ),
+                    tools = listOf(com.example.api.Tool(googleSearch = emptyMap()))
                 )
 
                 var response: com.example.api.GenerateContentResponse? = null
                 var firstException: Throwable? = null
                 var retryDelayMs = 600L
 
-                val candidateModels = listOf("gemini-2.5-flash", "gemini-flash-latest", "gemini-3.5-flash", "gemini-2.5-pro", "gemini-2.0-flash")
+                val candidateModels = listOf("gemini-3.8-flash", "gemini-flash-latest", "gemini-3.7-flash", "gemini-3.5-flash")
 
                 for (attempt in 1..3) {
                     for (modelName in candidateModels) {
@@ -1560,7 +1564,7 @@ class LithiaViewModel(application: Application) : AndroidViewModel(application) 
 
             // 3. Try Gemini Multimodal Image Generation (gemini-2.0-flash / gemini-1.5-flash)
             if (base64Result.isNullOrBlank()) {
-                val imageModels = listOf("gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash")
+                val imageModels = listOf("gemini-3.1-flash-image", "gemini-3-pro-image", "gemini-2.5-flash-image")
                 for (imgModel in imageModels) {
                     try {
                         val genReq = com.example.api.GenerateContentRequest(
@@ -2498,7 +2502,7 @@ CREATED BY RENAE 0010110 AND ELI·SANAN·AHU 000·000·000""".trimIndent()
                 for (attempt in 1..3) {
                     try {
                         var response: com.example.api.GenerateContentResponse? = null
-                        val models = listOf("gemini-2.5-flash", "gemini-flash-latest", "gemini-3.5-flash", "gemini-2.5-pro", "gemini-2.0-flash")
+                        val models = listOf("gemini-3.8-flash", "gemini-flash-latest", "gemini-3.7-flash", "gemini-3.5-flash")
                         for (modelName in models) {
                             try {
                                 val respCandidate = withContext(Dispatchers.IO) {

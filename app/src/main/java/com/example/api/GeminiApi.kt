@@ -14,11 +14,17 @@ import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 @JsonClass(generateAdapter = true)
+data class Tool(
+    @Json(name = "googleSearch") val googleSearch: Map<String, String>? = emptyMap()
+)
+
+@JsonClass(generateAdapter = true)
 data class GenerateContentRequest(
     @Json(name = "contents") val contents: List<Content>? = null,
     @Json(name = "generationConfig") val generationConfig: GenerationConfig? = null,
     @Json(name = "systemInstruction") val systemInstruction: Content? = null,
-    @Json(name = "safetySettings") val safetySettings: List<SafetySetting>? = null
+    @Json(name = "safetySettings") val safetySettings: List<SafetySetting>? = null,
+    @Json(name = "tools") val tools: List<Tool>? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -139,7 +145,7 @@ interface GeminiApiService {
         @Body request: GenerateContentRequest
     ): GenerateContentResponse
 
-    @POST("v1beta/models/gemini-2.0-flash:generateContent")
+    @POST("v1beta/models/gemini-3.8-flash:generateContent")
     suspend fun generateContent(
         @Query("key") apiKey: String,
         @Body request: GenerateContentRequest
